@@ -69,7 +69,7 @@ class Hand(BodyPart):
         self.add_finger("pinky")
 
 class Foot(Hand):
-    """Basically a hand *But it's a foot!!*"""
+    """Basically a hand *It's totally a foot tho!!*"""
     def __init__(self):
         Hand.__init__(self)
         self.toes = {}
