@@ -103,6 +103,9 @@ class TerminalWindow():
         self.draw_character(x,y+h+1,"╚")
         self.draw_character(x+w+1,y+h+1,"╝")
 
+    def draw_menu_box_centered(self,w,h):
+        self.draw_menu_box(int(self.terminal_size[0]/2)-int(w/2),int(self.terminal_size[1]/2)-int(h/2),w,h)
+
     def update(self):
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
