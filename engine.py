@@ -36,17 +36,20 @@ class TerminalWindow():
                     self.scroll = 0
                     self.tick_counter = -self.reset_rest # Give rest time when scroll wraps
 
-    def __init__(self,resolution):
-        self.resolution = resolution
+    def __init__(self,resolution=None):
         self.tileset_settings_file = open("./tileset.json")
         self.tileset_settings = loads(self.tileset_settings_file.read())
         self.tileset_settings_file.close()
+        if resolution != None:
+            self.resolution = resolution
+        else:
+            self.resolution = self.tileset_settings["window_resolution"]
         self.terminal_size = self.tileset_settings["terminal_size"]
         self.tileset_scaling = self.tileset_settings["scaling"]
         self.tile_size = [self.tileset_settings["tile_size"][0]*self.tileset_scaling[0],self.tileset_settings["tile_size"][1]*self.tileset_scaling[1]]
         self.tileset_width = self.tileset_settings["tileset_size"][0]
         self.tileset_height = self.tileset_settings["tileset_size"][1]
-        self.colorable = self.tileset_settings["colorable"] # This will usually be on when using text graphics
+        self.colorable = self.tileset_settings["colorable"] # This will usually be true when using text graphics
         self.fg_color = pygame.Color([255,255,255])
         self.bg_color = pygame.Color([0,0,0])
         self.prev_fg_color = self.fg_color
